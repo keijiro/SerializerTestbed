@@ -2,13 +2,16 @@ using UnityEngine;
 
 public sealed class HotReloading : MonoBehaviour
 {
-    int _x, _y, _z;
+    int _x, _y;
 
-    (int x, int y, int z) _t;
+    int X { get; set; }
+    int Y { get; set; }
+
+    (int x, int y) _t;
 
     void Start()
-      => (_x, _y, _z, _t) = (1, 2, 3, (1, 2, 3));
+      => (_x, _y, X, Y, _t) = (1, 2, 1, 2, (1, 2));
 
     void Update()
-      => Debug.Log($"{_x}, {_y}, {_z} | {_t.x}, {_t.y}, {_t.z}");
+      => Debug.Log($"{_x}, {_y} | {X}, {Y} | {_t.x}, {_t.y}");
 }
