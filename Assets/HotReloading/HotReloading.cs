@@ -22,4 +22,9 @@ public sealed class HotReloading : MonoBehaviour
 
     void Update()
       => Debug.Log($"{_x}, {_y} | {X}, {Y} | {_t.x}, {_t.y} | {_obj}, {_obj2}");
+
+    void LateUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) Resources.UnloadUnusedAssets();
+    }
 }
