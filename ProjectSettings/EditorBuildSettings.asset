@@ -6,13 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/AssetGC/AssetGC.unity
-    guid: c546ad3ffefac4f4791423279da030a0
-  - enabled: 1
-    path: Assets/AssetGC/AssetGC2.unity
-    guid: 5d4502be534b34b2e9146e83f1334bd6
-  - enabled: 1
-    path: Assets/AssetGC/AssetGC3.unity
-    guid: 4d241a113ca2148629889362d348fdfa
+    path: Assets/Bundles/Bundles.unity
+    guid: 7bc3ad44851f4414284a44d85331f28a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

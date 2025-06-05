@@ -18,3 +18,7 @@ Desktop.ini
 /*.exe
 /*.apk
 /*_DoNotShip
+
+/AssetBundles
+/Assets/StreamingAssets
+/Assets/StreamingAssets.meta
