@@ -6,7 +6,7 @@ public sealed class BundleLoader : MonoBehaviour
     {
         var path = Application.streamingAssetsPath + "/bundle1";
         var bundle = AssetBundle.LoadFromFile(path);
-        var mat = bundle.LoadAsset<Material>("Assets/Bundles/Material2.mat");
+        var mat = bundle.LoadAsset<Material>("material");
         GetComponent<MeshRenderer>().sharedMaterial = mat;
         return bundle;
     }
