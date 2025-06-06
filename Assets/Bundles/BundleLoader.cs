@@ -2,28 +2,23 @@ using UnityEngine;
 
 public sealed class BundleLoader : MonoBehaviour
 {
-    AssetBundle LoadBundle1()
-    {
-        var path = Application.streamingAssetsPath + "/bundle1";
-        var bundle = AssetBundle.LoadFromFile(path);
-        var mat = bundle.LoadAsset<Material>("material");
-        GetComponent<MeshRenderer>().sharedMaterial = mat;
-        return bundle;
-    }
-
-    AssetBundle LoadBundle2()
-    {
-        var path = Application.streamingAssetsPath + "/bundle2";
-        return AssetBundle.LoadFromFile(path);
-    }
+    void SetMaterial(Material mat)
+      => GetComponent<MeshRenderer>().sharedMaterial = mat;
 
     async void Start()
     {
-        var bundle1 = LoadBundle1();
+        var path1 = Application.streamingAssetsPath + "/bundle1";
+        var path2 = Application.streamingAssetsPath + "/bundle2";
+
+        var bundle1 = AssetBundle.LoadFromFile(path1);
         Debug.Log("Bundle 1 loaded");
         await Awaitable.WaitForSecondsAsync(1);
 
-        var bundle2 = LoadBundle2();
+        SetMaterial(bundle1.LoadAsset<Material>("material"));
+        Debug.Log("Material loaded");
+        await Awaitable.WaitForSecondsAsync(1);
+
+        var bundle2 = AssetBundle.LoadFromFile(path2);
         Debug.Log("Bundle 2 loaded");
         await Awaitable.WaitForSecondsAsync(1);
 
@@ -32,12 +27,16 @@ public sealed class BundleLoader : MonoBehaviour
         Debug.Log("Unloaded");
         await Awaitable.WaitForSecondsAsync(1);
 
-        bundle2 = LoadBundle2();
+        bundle1 = AssetBundle.LoadFromFile(path1);
+        Debug.Log("Bundle 1 loaded");
+        await Awaitable.WaitForSecondsAsync(1);
+
+        bundle2 = AssetBundle.LoadFromFile(path2);
         Debug.Log("Bundle 2 loaded");
         await Awaitable.WaitForSecondsAsync(1);
 
-        bundle1 = LoadBundle1();
-        Debug.Log("Bundle 1 loaded");
+        SetMaterial(bundle1.LoadAsset<Material>("material"));
+        Debug.Log("Material loaded");
         await Awaitable.WaitForSecondsAsync(1);
 
         bundle1.Unload(true);
