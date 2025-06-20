@@ -42,5 +42,32 @@ public sealed class BundleLoader : MonoBehaviour
         bundle1.Unload(true);
         bundle2.Unload(true);
         Debug.Log("Unloaded");
+
+        bundle1 = AssetBundle.LoadFromFile(path1);
+        bundle2 = AssetBundle.LoadFromFile(path2);
+
+        var mat1 = bundle1.LoadAsset<Material>("material");
+        SetMaterial(mat1);
+
+        Debug.Log("Bundles loaded");
+        await Awaitable.WaitForSecondsAsync(1);
+
+        bundle1.Unload(false);
+        bundle2.Unload(false);
+
+        Debug.Log("Bundles unloaded");
+        await Awaitable.WaitForSecondsAsync(1);
+
+        bundle1 = AssetBundle.LoadFromFile(path1);
+        bundle2 = AssetBundle.LoadFromFile(path2);
+
+        var mat2 = bundle1.LoadAsset<Material>("material");
+        SetMaterial(mat2);
+
+        Debug.Log("Bundles loaded");
+        await Awaitable.WaitForSecondsAsync(1);
+
+        Debug.Log($"mat1 texture: {mat1.mainTexture.GetInstanceID()}");
+        Debug.Log($"mat2 texture: {mat2.mainTexture.GetInstanceID()}");
     }
 }
